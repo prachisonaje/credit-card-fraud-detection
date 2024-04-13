@@ -7,13 +7,14 @@
     <section class="text-white">
         <div class="hero-section">
             <div class="text-content">
-                <h1 class="text-5xl font-bold font-heading">Reach more people in real time</h1>
+                <h1 class="text-5xl font-bold font-heading">Protect Your Transactions with Real-Time Fraud Detection</h1>
+
                 <p>
-                    The Screeno ecosystem is designed to help you generate profit. Set up complete sales and
-                    marketing funnels with ease using the Screeno
+                    FraudNix is an advanced system tailored to detect and prevent credit card fraud effectively. 
+                    With FraudNix, you can safeguard your financial transactions and protect your business 
+                    from fraudulent activities.
                 </p>
                 <div class="flex mt-12 space-x-3">
-                    <button class="w-1/3 primary">Start Free Trial</button>
                     <button class="w-1/3 outline">Login</button>
                 </div>
             </div>
@@ -30,16 +31,22 @@
                 <img src="/images/home2.png" class="home-image" alt="Hero" />
             </div>
             <div class="text-content">
-				<h1 class="text1">How to use</h1>
-				<p>
-                    The Screeno ecosystem is designed to help you generate profit. Set up complete sales and
-                    marketing funnels with ease using the Screeno
-                </p>
-				<ol>
-					<li>Eat</li>
-					<li>Code</li>
-					<li>Sleep</li>
-				  </ol>
+				<h1 class="text1">ABOUT</h1>
+				<!-- <p>
+                    FraudNix is an advanced system tailored to detect and prevent credit card fraud effectively. 
+                    With FraudNix, you can safeguard your financial transactions and protect your business 
+                    from fraudulent activities.
+                </p> -->
+				<ul>
+                    <li>Integrate FraudNix: Seamlessly incorporate FraudNix into your existing payment 
+                        processing systems or e-commerce platforms.</li>
+                    <li>Analyze Transactions: FraudNix analyzes every transaction in real-time, utilizing 
+                        cutting-edge algorithms and machine learning techniques to identify potential fraud 
+                        patterns.</li>
+                    <li>Take Action: Upon detecting suspicious activities, FraudNix triggers alerts and 
+                        notifications, empowering you to take immediate action to mitigate risks and prevent 
+                        fraudulent transactions.</li>
+				  </ul>
             </div>
             
         </div>
@@ -53,16 +60,16 @@
 <footer class="footer">
 	<div class="container2">
 	  <p>© 2024 FraudNix. All rights reserved.</p>
-	  <!-- <p>
+	  <p>
 		Follow us on
 		<a href="https://twitter.com/yourprofile">Twitter</a>,
 		<a href="https://facebook.com/yourprofile">Facebook</a>, and
 		<a href="https://instagram.com/yourprofile">Instagram</a>.
-	  </p> -->
+	  </p>
 	</div>
   </footer>
 
-<style>
+<style lang="postcss">
 
     .container {
         background-color: black; /* Set background color to black */
@@ -95,6 +102,7 @@
     .text-content {
         max-width: 50%; /* Adjust based on your preference */
         padding: 0 20px; /* Adjust padding for spacing */
+        text-align: left;
     }
 
     .image-container {
