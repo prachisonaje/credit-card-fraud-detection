@@ -45,40 +45,105 @@
   }
 </script>
 
-<main id="main">
+<main id="main" style="height: 100vh;">
 
   <!-- ======= Hero Section ======= -->
-  <section id="homesection" style="padding: 0px 0px;">
+  <section id="homesection" style="height: 100%;">
       <!--__________________________________ header-box______________________________________________ -->
-      <div id="header-container" style="margin-bottom: 20px;">
-          <h1 id="header2" style="font-size: 24px;">Upload Credit Data Files</h1>
+      <div id="header-container">
+          <h1 id="header2">Upload Credit Data Files</h1>
       </div>
       <!-- ___________________________________main-division____________________________________________ -->
       <div id="upload-container">
-          <div id="upload-header-container" style="margin-bottom: 10px;">
-              <h3 id="upload-header" style="font-size: 18px;">UPLOAD CREDIT CARD DATASET</h3>
-          </div>
+        
           <div class="upload">
               <form class="upload-form" on:submit={handleSubmit} enctype="multipart/form-data">
                   <!-- CSRF token -->
                   <!-- svelte-ignore missing-declaration -->
                   <!-- <input type="hidden" name="csrf_token" value="{{ csrf_token }}"> -->
-                  <label for="filename" style="font-weight: bold;">File Name</label><br>
-                  <input type="text" name="data_file_name" id="filename" style="margin-bottom: 10px; padding: 5px;" placeholder="File Name"><br>
+                  <label for="filename">File Name:</label><br>
+                  <input type="text" name="data_file_name" id="filename"><br>
                   <!-- svelte-ignore a11y-label-has-associated-control -->
-                  <label style="font-weight: bold;">Upload Credit Card Dataset File</label><br>
-                  <input id="file" type="file" bind:this={fileInput} accept=".csv, .xlsx, .xls" style="margin-bottom: 10px;"><br>
-                  <label for="description" style="font-weight: bold;">Description of the File</label><br>
-                  <textarea placeholder="Description" name="description" id="description" style="margin-bottom: 10px; padding: 5px;"></textarea><br>
-                  <input on:click={redirectToReports} id="btn" type="submit" value="SUBMIT" style="background-color: #007bff; color: #fff; padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer;">
+                  <label>Upload Credit Card Dataset File</label><br>
+                  <input id="file" type="file" bind:this={fileInput} accept=".csv, .xlsx, .xls"><br>
+                  <label for="description">Description of the File:</label><br>
+                  <textarea placeholder="Description" name="description" id="description"></textarea><br>
+                  <input on:click={redirectToReports} id="btn" type="submit" value="SUBMIT">
               </form>
           </div>
       </div>
   </section><!-- End Hero -->
 
+  <footer class="footer">
+    <div class="container2">
+      <p>© 2024 FraudNix. All rights reserved.</p>
+      <p>
+        Follow us on
+        <a href="https://twitter.com/yourprofile">Twitter</a>,
+        <a href="https://facebook.com/yourprofile">Facebook</a>, and
+        <a href="https://instagram.com/yourprofile">Instagram</a>.
+      </p>
+    </div>
+  </footer>
 </main>
 
 <style lang="postcss">
-  /* Your CSS styles go here */
-  /* You can use inline styles or import CSS files directly */
+  #homesection {
+      padding: 0px;
+      background-color: black;
+  }
+
+  #header-container {
+      margin-bottom: 20px;
+  }
+
+  #header2 {
+      font-size: 40px;
+      text-align: center;
+      color: #fff;
+
+  }
+
+  #upload-container {
+      margin-bottom: 10px;
+      color:rgb(0, 100, 200);
+      text-align: center;
+  }
+
+  /* #upload-header {
+      font-size: 18px;
+  } */
+  .upload-form{
+    text-align: center;
+  }
+  .upload {
+      padding: 0px;
+      text-align: left;
+  }
+
+  .upload-form label {
+      font-weight: bold;
+  }
+
+  .upload-form input[type="text"],
+  .upload-form textarea {
+      margin-bottom: 8px;
+      padding: 10px;
+      color: black;
+  }
+
+  #btn {
+      background-color: #007bff;
+      color: #fff;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+  }
+  .footer {
+  text-align: center;
+	color: white; 
+	margin-bottom: 10px;
+  background-color: black;		
+  }
 </style>

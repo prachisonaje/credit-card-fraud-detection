@@ -7,16 +7,13 @@
     <section class="text-white">
         <div class="hero-section">
             <div class="text-content">
-                <h1 class="text-5xl font-bold font-heading">Protect Your Transactions with Real-Time Fraud Detection</h1>
+                <h1>Protect Your Transactions with Real-Time Fraud Detection</h1>
 
                 <p>
                     FraudNix is an advanced system tailored to detect and prevent credit card fraud effectively. 
                     With FraudNix, you can safeguard your financial transactions and protect your business 
                     from fraudulent activities.
                 </p>
-                <div class="flex mt-12 space-x-3">
-                    <button class="w-1/3 outline">Login</button>
-                </div>
             </div>
             <div class="image-container">
                 <img src="/images/home1.png" class="home-image" alt="Hero" />
@@ -30,13 +27,8 @@
 			<div class="image-container1">
                 <img src="/images/home2.png" class="home-image" alt="Hero" />
             </div>
-            <div class="text-content">
+            <div class="text-content2">
 				<h1 class="text1">ABOUT</h1>
-				<!-- <p>
-                    FraudNix is an advanced system tailored to detect and prevent credit card fraud effectively. 
-                    With FraudNix, you can safeguard your financial transactions and protect your business 
-                    from fraudulent activities.
-                </p> -->
 				<ul>
                     <li>Integrate FraudNix: Seamlessly incorporate FraudNix into your existing payment 
                         processing systems or e-commerce platforms.</li>
@@ -102,7 +94,12 @@
     .text-content {
         max-width: 50%; /* Adjust based on your preference */
         padding: 0 20px; /* Adjust padding for spacing */
-        text-align: left;
+        /* text-align: left; */
+        font-size: 20px;
+        
+    }
+    .text-content h1{
+        font-size: 40px;
     }
 
     .image-container {
@@ -121,11 +118,17 @@
         width: 110%; /* Increase the size of the image */
 		height:400px;
     }
+    .text-content2 h1{
+        text-align: center;
+        font-size: 40px;
+    }
+    .text-content2{
+    max-width: 50%; /* Adjust based on your preference */
+        padding: 0 20px; /* Adjust padding for spacing */
+        text-align: left;
+        font-size: 20px;
+    }
 
-	
-	.text1{
-		text-align: center;
-	}
 
 	
 
