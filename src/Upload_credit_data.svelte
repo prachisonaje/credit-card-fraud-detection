@@ -21,7 +21,7 @@
       return;
     }
 
-    const formData = new FormData();
+    const formData = new FormData(event.target);
     formData.append('file', file);
 
     try {
@@ -29,10 +29,10 @@
         method: 'POST',
         body: formData
       });
-      const uploded_file_ids_array = await response.json();
-      console.log('Upload successful:', uploded_file_ids_array);
+      const upload_details = await response.json();
+      console.log('Upload successful:', upload_details);
       alert('File uploaded successfully!');
-      redirectToReports(uploded_file_ids_array); // Redirect to reports page
+      redirectToReports(upload_details.id); // Redirect to reports page
     } 
     catch (error) {
       console.error('Error uploading file:', error);
@@ -40,8 +40,8 @@
     }
   }
 
-  function redirectToReports(ids) {
-    window.location.href = routes.reports+'?uploaded_file_ids='+ids.join('+');
+  function redirectToReports(id) {
+    window.location.href = routes.reports+'?uploaded_file_id='+id;
   }
 </script>
 
@@ -68,7 +68,7 @@
                   <input id="file" type="file" bind:this={fileInput} accept=".csv, .xlsx, .xls"><br>
                   <label for="description">Description of the File:</label><br>
                   <textarea placeholder="Description" name="description" id="description"></textarea><br>
-                  <input on:click={redirectToReports} id="btn" type="submit" value="SUBMIT">
+                  <button id="btn" type="submit">SUBMIT</button>
               </form>
           </div>
       </div>
