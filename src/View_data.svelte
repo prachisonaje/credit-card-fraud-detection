@@ -36,7 +36,7 @@
   <section id="homesection" style="padding: 0px 0px;">
     <!--__________________________________ header-box______________________________________________ -->
     <div id="container">
-      <h1 id="header2">VIEW DATA</h1>
+      <!-- <h1 id="header2">VIEW DATA</h1> -->
     </div>
     {#if show_data}
       <button
