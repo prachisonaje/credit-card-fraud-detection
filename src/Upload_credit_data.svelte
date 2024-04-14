@@ -5,8 +5,8 @@
   import Reports from './Reports.svelte';
 
   const routes = {
-    UploadCreditData: "/Upload_credit_data",
-    reports: "/Reports"
+    UploadCreditData: "/upload_credit_data",
+    reports: "/reports"
   };
 
   let fileInput;
@@ -33,7 +33,7 @@
       console.log('Upload successful:', upload_details);
       alert('File uploaded successfully!');
       redirectToReports(upload_details.id); // Redirect to reports page
-    } 
+    }
     catch (error) {
       console.error('Error uploading file:', error);
       alert('An error occurred while uploading the file.');
@@ -62,7 +62,7 @@
                   <!-- svelte-ignore missing-declaration -->
                   <!-- <input type="hidden" name="csrf_token" value="{{ csrf_token }}"> -->
                   <label for="filename">File Name:</label><br>
-                  <input type="text" name="data_file_name" id="filename"><br>
+                  <input type="text" name="filename" id="filename"><br>
                   <!-- svelte-ignore a11y-label-has-associated-control -->
                   <label>Upload Credit Card Dataset File</label><br>
                   <input id="file" type="file" bind:this={fileInput} accept=".csv, .xlsx, .xls"><br>

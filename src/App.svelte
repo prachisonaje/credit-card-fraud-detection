@@ -4,6 +4,7 @@
 	import Dash from './Dash.svelte';
 	import Reports from './Reports.svelte';
 	import UploadCreditData from './Upload_credit_data.svelte';
+	import View_data from './View_data.svelte';
 	import '@fontsource/montserrat';
 	import '@fontsource/mulish';
 	import { Router, Route } from 'svelte-routing';
@@ -14,7 +15,8 @@
 	<Route path="/" component={Home} />
 	<Route path="/dash" component={Dash} />
 	<Route path="/reports" component={Reports} /> 
-	<Route path="/Upload_credit_data" component={UploadCreditData}/> 
+	<Route path="/upload_credit_data" component={UploadCreditData}/>
+	<Route path="/view-data" component={View_data} />
 </Router>
 
 

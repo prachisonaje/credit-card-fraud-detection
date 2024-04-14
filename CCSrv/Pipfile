@@ -8,7 +8,14 @@ flask = "*"
 joblib = "*"
 pandas = "*"
 scikit-learn = "*"
+numpy = "*"
+xgboost = "*"
 
 [dev-packages]
+ipykernel = "*"
+matplotlib = "*"
+seaborn = "*"
+xgboost = "*"
+imblearn = "*"
 
 [requires]

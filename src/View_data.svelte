@@ -1,62 +1,132 @@
 <!-- ViewData.svelte -->
 <script>
-    import { onMount } from 'svelte';
-    import 'datatables.net-bs4/css/dataTables.bootstrap4.min.css';
-    import 'datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css';
-    import 'datatables.net-bs4';
-    import 'datatables.net-buttons-bs4';
-  
-    let columns = [
-      { title: "Sr No." },
-      // Add other hardcoded columns if any.
-      //...
-    ];
-  
-    onMount(() => {
-      const table = $('#example').DataTable({
-        serverSide: true,
-        ajax: {
-          url: "{% url 'retrieve_data_by_id' id %}", // Adjust this if necessary
-          type: 'GET'
-        },
-        columns: columns,
-        dom: 'Bfrtip',
-        buttons: [
-          {
-            extend: 'copy',
-            text: 'Copy'
-          },
-          {
-            extend: 'excel',
-            text: 'Download excel'
-          },
-        ],
-        initComplete: function () {
-          const btns = document.querySelectorAll('.dt-button');
-          btns.forEach(btn => {
-            btn.classList.add('btn', 'btn-primary', 'btn-sm');
-            btn.classList.remove('dt-button');
-          });
-        },
-        pageLength: 100,
-        lengthMenu: [[100, 250, 500, 1000], [100, 250, 500, 1000]]
-      });
-    });
-  </script>
-  
-  <main id="main">
-    <!-- ======= Hero Section ======= -->
-    <section id="homesection" style="padding: 0px 0px;">
-      <!--__________________________________ header-box______________________________________________ -->
-      <div id="header-container">
-        <h1 id="header2">VIEW DATA</h1>
-      </div>
-      <div class="container" style="width: 90%; margin-top: 13px;">
-        <table id="example"
-               class="table table-striped table-bordered dt-responsive nowrap table-wrapper-scroll-y my-custom-scrollbar"
-               style="width:100%;">
-        </table>
-      </div>
-    </section><!-- End Hero -->
-  </main>
-  
+  import { onMount } from "svelte";
+  import Papa from "papaparse";
+
+  let show_data = false;
+
+  let csv = {
+    data: [{}],
+  };
+  let predictions = {
+    model1: [],
+  };
+  let headers = [];
+  let models = [];
+
+  onMount(async () => {
+    show_data = !(Boolean(new URLSearchParams(window.location.search).get("predictions")));  // data = !predictions
+
+    const id = new URLSearchParams(window.location.search).get("id");
+
+    const file_data = await fetch("/api/data/" + id).then((res) => res.text());
+    csv = Papa.parse(file_data, { header: true });
+    console.log(csv);
+    headers = Object.keys(csv.data[0]);
+
+    predictions = await fetch("/api/predictions/" + id).then((res) =>
+      res.json()
+    );
+    models = Object.keys(predictions);
+  });
+</script>
+
+<main id="main">
+  <!-- ======= Hero Section ======= -->
+  <section id="homesection" style="padding: 0px 0px;">
+    <!--__________________________________ header-box______________________________________________ -->
+    <div id="container">
+      <h1 id="header2">VIEW DATA</h1>
+    </div>
+    {#if show_data}
+      <button
+        type="button"
+        on:click={() => (show_data = !show_data)}
+        class="btn btn-primary"
+        disabled={!show_data}>Hide Data</button>
+    {/if}
+    {#if !show_data}
+      <button
+        type="button"
+        on:click={() => (show_data = !show_data)}
+        class="btn btn-primary"
+        disabled={show_data}>Show Data</button>
+    {/if}
+
+    <div class="container table-responsive">
+      <table class="table table-striped table-bordered dt-responsive nowrap">
+        <thead class="thead-light">
+          <tr>
+            <th>Sr. No.</th>
+            {#if show_data}
+              {#each headers as header}
+                <th>{header}</th>
+              {/each}
+            {/if}
+            {#each models as model}
+              <th>{model}</th>
+            {/each}
+          </tr>
+        </thead>
+        <tbody>
+          {#each csv.data as item, index}
+            <tr>
+              <td>{index + 1}</td>
+              {#if show_data}
+                {#each headers as header}
+                  <td>{item[header]}</td>
+                {/each}
+              {/if}
+              {#each models as model}
+                <td>{predictions[model][index]}</td>
+              {/each}
+            </tr>
+          {/each}
+        </tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<style>
+  #header2 {
+    font-size: 2rem;
+    font-weight: 400;
+    padding: 1rem;
+  }
+
+  .container {
+    padding: 30px;
+  }
+
+  .table {
+    width: 100%;
+    background-color: #313030;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .table-striped tbody tr:nth-of-type(odd) {
+    background-color: #7e7d7dbd;
+  }
+
+  .table-bordered {
+    border: 1px solid #dee2e6;
+  }
+
+  .table-bordered th,
+  .table-bordered td {
+    border: 1px solid #dee2e6;
+  }
+
+  .dt-responsive {
+    overflow-x: auto;
+  }
+
+  .nowrap {
+    white-space: nowrap;
+  }
+
+  .table-responsive {
+    overflow-x: auto;
+  }
+</style>

@@ -4,6 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "postinstall": "npm run setup-flask-server",
+    "setup-flask-server": "cd CCSrv && pip install pipenv && mkdir -p .venv && pipenv install",
+    "flask": "cd CCSrv && pipenv run python app.py",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
@@ -19,6 +22,10 @@
   "dependencies": {
     "@fontsource/montserrat": "^5.0.17",
     "@fontsource/mulish": "^5.0.17",
+    "datatables": "^1.10.18",
+    "flowbite-svelte": "^0.44.24",
+    "papaparse": "^5.4.1",
+    "simple-datatables": "^9.0.3",
     "svelte-routing": "^2.12.0"
   }
 }

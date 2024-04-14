@@ -3,8 +3,8 @@
   import { Link } from 'svelte-routing';
 
   const routes = {
-      UploadCreditData: "/Upload_credit_data",
-      reports: "/Reports"
+      UploadCreditData: "/upload_credit_data",
+      reports: "/reports"
       // account_details: "/account_details",
   };
 </script>
