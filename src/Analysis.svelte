@@ -1,143 +1,68 @@
-<!-- CreditCardAnalysis.svelte -->
 <script>
-    // Import necessary dependencies or define variables here
+  // You can define your data here
+  let tableData = [
+    { column1: 'Logistic Regression', column2: '0.9956636997243729', column3: '0.6760556252819613', column4: '0.3970700350717687' },
+    { column1: 'Decision Tree', column2: '0.998964203577886', column3: '0.8517770244055978', column4: '1.0' },
+    { column1: 'Random Forest', column2: '0.999350432752234', column3: '0.9430364675282913', column4: ' 0.04' },
+    { column1: 'XGBoost', column2: '0.9995435473394076', column3: '0.9745198538413308', column4: '8.65123511175625e-05' },
+    { column1: 'AdaBoost ', column2: '0.9991573181650603', column3: '0.972568152527001', column4: '0.46770802029256053' },
+    { column1: 'Local Outlier Factor', column2: '0.9965942207085425', column3: '', column4: '' }
    
-  let data_shape = [/* assign the data shape values here */];
-  let unique_targets = [/* assign the unique target values here */];
+  ];
 </script>
 
+<style>
+  /* Styling for the table container */
+  .table-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh; 
+  }
 
-  
-  <main id="main">
-    <!-- ======= Hero Section ======= -->
-    <section id="homesection" style="padding: 0px 0px">
-      <!--__________________________________ header-box______________________________________________ -->
-      <div id="header-container">
-        <h1 id="header2">CREDIT CARD DATASET ANALYSIS</h1>
-      </div>
-      <!-- ___________________________________main-division____________________________________________ -->
-      <div class="fraud-container" style="margin-bottom: 10px">
-        <div class="fraud-header-container">
-          <h3 class="fraud-header">Analysis of the Dataset</h3>
-        </div>
-        <div class="result-table1">
-          <table>
-            <tr>
-              <th>Algorithm Name</th>
-              <th>Accuracy Score</th>
-              <!-- You might have to compute this if you've a trained model -->
-            </tr>
-            <tr>
-                <td>Data Shape</td>
-                <td>({data_shape[0]}, {data_shape[1]})</td>
-              </tr>
-              <tr>
-                <td>Unique Target Values</td>
-                <td>[{unique_targets.join(" ")}]</td>
-              </tr>
-              
-            <tr>
-              <td>Percentage of Non-Fraudulent Transactions:</td>
-              <td>{{ percent_no_problem }}%</td>
-            </tr>
-            <tr>
-              <td>Percentage of Fraudulent Transactions:</td>
-              <td>{{ percent_problem }}%</td>
-            </tr>
-            <tr>
-              <td>Null Values</td>
-              <td>{{ has_null }}</td>
-            </tr>
-            <tr>
-              <td>Total Fraudulent Transactions in Dataset</td>
-              <td>{{ fraud_shape.0 }}</td>
-            </tr>
-            <tr>
-              <td>Total Normal Transaction in Dataset</td>
-              <td>{{ normal_shape.0 }}</td>
-            </tr>
-          </table>
-        </div>
-  
-        <div class="fraud-header-container">
-          <h3 class="fraud-header">
-            Credit Card Fraud Percentage according to dataset
-          </h3>
-        </div>
-      </div>
-    </section>
-    <!-- End Hero -->
-  </main>
-  
-  <style lang="postcss">
-    /* Your CSS styles go here */
-    .btn {
-      width: 100%;
-      margin: 0px auto 0px auto;
-      padding: 10px;
-      color: #FFFFFF;
-      font-size: 15px;
-      background-color: #5cb874;
-      border-style: none;
-    }
-  
-    .btn:hover {
-      opacity: 0.8;
-    }
-  
-    .btn-cover {
-      width: 90%;
-      margin: 20px auto 10px auto;
-    }
-  
-    .fraud-container .result-table1 table,
-    th,
-    td {
-      border-width: 1px;
-      border-color: black;
-      border-style: solid;
-      border-spacing: 0px;
-    }
-  
-    .fraud-container .result-table1 table,
-    h3 {
-      width: 100%;
-      text-align: center;
-    }
-  
-    .fraud-container .result-table1 h3 {
-      color: #5cb874;
-    }
-  
-    .fraud-container .result-table1 td,
-    th {
-      padding: 10px;
-    }
-  
-    .fraud-container .result-table1 th {
-      background-color: #5cb874;
-      color: #FFFFFF;
-    }
-  
-    .fraud-container .result-table1 table {
-      margin-bottom: 20px;
-      margin-top: 20px;
-    }
-  
-    .fraud-container .result-table1 .c-odd {
-      background-color: #5cb874;
-      width: 20%;
-      color: #FFFFFF;
-    }
-  
-    .result-table1 table {
-      table-layout: fixed;
-      width: 100%;
-      border-spacing: 0px;
-    }
-  
-    .result-table1 td {
-      width: 25%;
-    }
-  </style>
-  
+  /* Styling for the table */
+  table {
+    border-collapse: collapse;
+    border: 2px solid white;
+    color: white;
+  }
+  th, td {
+    border: 1px solid white;
+    padding: 8px;
+    text-align: left;
+  }
+  #header2 {
+    font-size: 40px;
+    font-weight: 400;
+    padding: 1rem;
+    text-align: center;
+  }
+
+</style>
+
+<!-- Table container to center the table -->
+<h1 id="header2">Analysis</h1>
+
+<div class="table-container">
+  <!-- Table structure -->
+  <table>
+    <thead>
+      <tr>
+        <th>Algorithm</th>
+        <th>Accuarcy</th>
+        <th>Roc_value</th>
+        <th>Threshold</th>
+      </tr>
+    </thead>
+    <tbody>
+      {#each tableData as row}
+        <tr>
+          <td>{row.column1}</td>
+          <td>{row.column2}</td>
+          <td>{row.column3}</td>
+          <td>{row.column4}</td>
+        </tr>
+      {/each}
+    </tbody>
+  </table>
+</div>

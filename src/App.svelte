@@ -5,6 +5,7 @@
 	import Reports from './Reports.svelte';
 	import UploadCreditData from './Upload_credit_data.svelte';
 	import View_data from './View_data.svelte';
+	import Analysis from './Analysis.svelte';
 	import '@fontsource/montserrat';
 	import '@fontsource/mulish';
 	import { Router, Route } from 'svelte-routing';
@@ -17,6 +18,7 @@
 	<Route path="/reports" component={Reports} /> 
 	<Route path="/upload_credit_data" component={UploadCreditData}/>
 	<Route path="/view-data" component={View_data} />
+	<Route path="/analysis" component={Analysis}/>
 </Router>
 
 

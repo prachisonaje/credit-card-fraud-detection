@@ -9,8 +9,8 @@
   });
 
   function handleDelete(file) {
-    console.log(`Delete file: ${file.name}`);
-    // Add your logic for deleting file
+    console.log(`Delete file: ${file.filename}`);
+    files = files.filter(f => f.id !== file.id);
   }
 
   function handlePrediction(file) {
@@ -43,18 +43,31 @@
           <a href="/view-data?id={file.id}"><button class="view-data">View Data</button></a>
           <button class="delete" on:click={() => handleDelete(file)}>Delete</button>
           <a href="/view-data?id={file.id}&predictions=true"><button class="prediction">Prediction</button></a>
-          <button class="analysis" on:click={() => handleAnalysis(file)}>Analysis</button>
+          <!-- <button class="analysis" on:click={() => handleAnalysis(file)}>Analysis</button> -->
+          <a href="/analysis"><button class="analysis">Analysis</button></a>
         </td>
       </tr>
     {/each}
   </tbody>
 </table>
 </div>
+<footer class="footer">
+  <div class="container2">
+    <p>© 2024 FraudNix. All rights reserved.</p>
+    <p>
+      Follow us on
+      <a href="https://twitter.com/yourprofile">Twitter</a>,
+      <a href="https://facebook.com/yourprofile">Facebook</a>, and
+      <a href="https://instagram.com/yourprofile">Instagram</a>.
+    </p>
+  </div>
+</footer>
 <style lang="postcss">
 
   h1 {
-    font-size: x-large;
+    font-size: 40px;
     padding: 1em;
+    text-align: center;
   }
 
   div.table {
@@ -70,7 +83,7 @@
 
   th,
   td {
-    border: 2px solid rgb(199, 61, 61);
+    border: 2px solid rgb(0, 100, 200);
     padding: 8px;
     text-align: left;
   }
@@ -108,5 +121,16 @@
   .analysis {
     background-color: #17a2b8;
     color: #fff;
+  }
+  .footer .container2{
+    /* padding: 20px; */
+    text-align: center;
+    bottom: 0;
+    margin-top: 250px;
+	color: white; 
+    padding-top: 70px;
+	/* margin-bottom: -50px; */
+    background-size: cover; /* Fit background to cover the container */
+		
   }
 </style>

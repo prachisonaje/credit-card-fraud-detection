@@ -90,9 +90,10 @@
 
 <style>
   #header2 {
-    font-size: 2rem;
+    font-size: 40px;
     font-weight: 400;
     padding: 1rem;
+    text-align: center;
   }
 
   .container {
@@ -129,4 +130,12 @@
   .table-responsive {
     overflow-x: auto;
   }
+
+  .btn-primary{
+   color: white;
+   border-color: white;
+   margin-left: 50px;
+   padding: 4px;
+  }
+  
 </style>
