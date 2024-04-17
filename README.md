@@ -5,6 +5,9 @@ Outlier Factor (LOF), Extreme Gradient Boosting (XGBoost), and Decision Tree (DT
 transactions
 ## Installation
 Step 1: Clone the repository
+```js
+git clone https://github.com/rifatperween/credit-card-fraud-detection.git
+```
 Step 2: Open the first terminal
 ```js
 npm install
