@@ -6,6 +6,23 @@ This project presents a comparative study of multiple Machine Learning algorithm
 
 Due to the highly imbalanced nature of credit card transaction datasets, the Synthetic Minority Oversampling Technique (SMOTE) is applied to improve model performance and enhance fraud detection capabilities.
 
+## Installation
+Step 1: Clone the repository
+```js
+git clone https://github.com/rifatperween/credit-card-fraud-detection.git
+```
+Step 2: Open the first terminal
+```js
+npm install
+npm run dev
+```
+Step 3: Open second terminal
+```js
+pipenv install
+pipenv shell
+python app.py
+```
+
 ## Features
 
 - Data preprocessing and cleaning
